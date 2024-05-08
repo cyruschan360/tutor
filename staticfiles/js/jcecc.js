@@ -13,7 +13,7 @@
   // Redirect openedx home to project website
   const isHome = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/?$/);
   if (isHome) {
-    location.replace('https://foss2.hku.hk/jcecc/online/learning/index');
+    location.replace('https://foss.hku.hk/jcecc/online/learning');
   }
 
   // Translate login page
@@ -63,7 +63,7 @@
   }, 1000);
    
   // Add frontend link in top menu
-  const link = 'https://foss2.hku.hk/jcecc/online/learning/index';
+  const link = 'https://foss.hku.hk/jcecc/online/learning';
   const linkLabel = (cookieLangCode === 'zh-cn') ? '主页' : '主頁';
   const dashboardLabel = (cookieLangCode === 'zh-cn') ? '返回课程目录' : '返回課程目錄';
 
@@ -102,7 +102,7 @@
         dropdownMenu.prepend(dropdownLink);
 
         dashboardLink.classList.add('mobile-nav-item', 'dropdown-item', 'dropdown-nav-item', 'jcecc', 'dashboardLink');
-        dashboardLink.innerHTML = `<a href="/dashboard" role="menuitem">${dashboardLabel}</a>`;
+        dashboardLink.innerHTML = `<a href="//learn-v2.jcecc.hk/dashboard" role="menuitem">${dashboardLabel}</a>`;
         dropdownMenu.prepend(dashboardLink);
     }
   }, 1000);
@@ -131,7 +131,7 @@
                   dropdownAppMenu.prepend(dropdownAppLink);
 
                   dashboardAppLink.classList.add('pgn__dropdown-item', 'dropdown-item', 'frontend-home', 'jcecc', 'dashboardAppLink');
-                  dashboardAppLink.setAttribute('href', '/dashboard');
+                  dashboardAppLink.setAttribute('href', '//learn-v2.jcecc.hk/dashboard');
                   dashboardAppLink.innerHTML = dashboardLabel;
                   dropdownAppMenu.prepend(dashboardAppLink);
               }              
