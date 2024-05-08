@@ -1,0 +1,48 @@
+#courseTabsNavigation a[href*="/discussions/"],
+#courseTabsNavigation a[href*="/dates"],
+nav.wrapper-course-material li.tab:has(a[href*="/discussions/"]),
+nav.wrapper-course-material li.tab:has(a[href*="/dates"]),
+footer img[src*="logo.png"],
+.dropdown-user-menu > div:nth-child(2),
+.dropdown-user-menu > div:nth-child(3),
+.dropdown-user-menu > div:nth-child(4),
+header.primary h1.branding,
+header.learning-header > div > a:not(.logo),
+header.learning-header .user-dropdown a[href*="/dashboard"],
+.dropdown-menu-right a[href*="/profile"],
+.dropdown-menu-right a[href*="/account"],
+button.save.problem-action-btn,
+.dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .action-more,
+.global-header .nav-links .secondary a.register-btn,
+.global-header .nav-links .secondary a.sign-in-btn,
+.global-header .nav-links .main a[href="/courses"],
+a[href*="//learn-v2.jcecc.hk/register"],
+a#forgot-password,
+a#controlled-tab-tab-\/register,
+.discussion-show.btn,
+.discussion.inline-discussion {
+  display: none;
+}
+
+.wrapper-footer footer#footer-openedx .footer-about-openedx {
+  width: 100%;
+}
+
+.dashboard .main-container .my-courses .listing-courses .course-item:last-of-type {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+ul.listing-courses {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.xmodule_display.xmodule_VideoBlock .video .video-wrapper .closed-captions.is-visible,
+.xmodule_display.xmodule_VideoBlock .video .subtitles .subtitles-menu {
+  font-size: large;
+}
+
+header.learning-header .user-dropdown .jcecc.dashboardAppLink {
+  display: block;
+} 
