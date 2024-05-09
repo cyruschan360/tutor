@@ -21,7 +21,8 @@ a[href*="//learn-v2.jcecc.hk/register"],
 a#forgot-password,
 a#controlled-tab-tab-\/register,
 .discussion-show.btn,
-.discussion.inline-discussion {
+.discussion.inline-discussion,
+.subtitles-menu > li.spacing {
   display: none;
 }
 
