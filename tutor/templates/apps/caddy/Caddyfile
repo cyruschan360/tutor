@@ -47,6 +47,14 @@
     }
     rewrite @favicon_matcher /theming/asset/images/favicon.ico
 
+    handle_path /online/* {
+        reverse_proxy http://frontend-apache:80
+    }
+
+    handle_path /static/video/* {
+        reverse_proxy http://nginx-video:8081
+    }
+
     # Limit profile image upload size
     handle_path /api/profile_images/*/*/upload {
         request_body {

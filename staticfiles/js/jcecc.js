@@ -12,8 +12,10 @@
 
   // Redirect openedx home to project website
   const isHome = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/?$/);
+  const langParam = (langCode == 'zh-tw') ? 'zh-Hant' : 'zh-Hans';
+  const homeUrl =  `https://learn-v2.jcecc.hk/online/learning?lang=${langParam}`;
   if (isHome) {
-    location.replace('https://foss.hku.hk/jcecc/online/learning');
+    location.replace(homeUrl);
   }
 
   // Translate login page
@@ -63,7 +65,6 @@
   }, 1000);
    
   // Add frontend link in top menu
-  const link = 'https://foss.hku.hk/jcecc/online/learning';
   const linkLabel = (cookieLangCode === 'zh-cn') ? '主页' : '主頁';
   const dashboardLabel = (cookieLangCode === 'zh-cn') ? '返回课程目录' : '返回課程目錄';
 
@@ -73,7 +74,7 @@
     let isLoaded = document.querySelector('.jcecc.topLink');
     if (topMenu && !isLoaded) {
         topLink.classList.add('mobile-nav-item', 'hidden-mobile', 'nav-item', 'nav-tab', 'jcecc', 'topLink');
-        topLink.innerHTML = `<a class="tab-nav-link" href="${link}" aria-current="page">${linkLabel}</a>`;
+        topLink.innerHTML = `<a class="tab-nav-link" href="${homeUrl}" aria-current="page">${linkLabel}</a>`;
         topMenu.prepend(topLink);
     }
   }, 1000);
