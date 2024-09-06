@@ -52,7 +52,7 @@
     }
 
     handle_path /learning/* {
-        reverse_proxy http://wordpress:80
+        reverse_proxy http://wordpress-web:80
     }
 
     handle_path /static/video/* {
