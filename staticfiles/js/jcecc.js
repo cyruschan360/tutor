@@ -13,7 +13,7 @@
   // Redirect openedx home to project website
   const isHome = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/?$/);
   const langParam = (langCode == 'zh-tw') ? 'zh-Hant' : 'zh-Hans';
-  const homeUrl =  `https://learn-v2.jcecc.hk/online/learning?lang=${langParam}`;
+  const homeUrl =  `https://learn-v2.jcecc.hk/online/learning/?lang=${langParam}`;
   if (isHome) {
     location.replace(homeUrl);
   }
@@ -65,7 +65,7 @@
   }, 1000);
    
   // Add frontend link in top menu
-  const linkLabel = (cookieLangCode === 'zh-cn') ? '主页' : '主頁';
+  const homeLabel = (cookieLangCode === 'zh-cn') ? '主页' : '主頁';
   const dashboardLabel = (cookieLangCode === 'zh-cn') ? '返回课程目录' : '返回課程目錄';
 
   let topMenuTimer = setInterval( () => {
@@ -74,7 +74,7 @@
     let isLoaded = document.querySelector('.jcecc.topLink');
     if (topMenu && !isLoaded) {
         topLink.classList.add('mobile-nav-item', 'hidden-mobile', 'nav-item', 'nav-tab', 'jcecc', 'topLink');
-        topLink.innerHTML = `<a class="tab-nav-link" href="${homeUrl}" aria-current="page">${linkLabel}</a>`;
+        topLink.innerHTML = `<a class="tab-nav-link" href="${homeUrl}" aria-current="page">${homeLabel}</a>`;
         topMenu.prepend(topLink);
     }
   }, 1000);
@@ -85,8 +85,8 @@
     let isLoaded = document.querySelector('.jcecc.topAppLink');
     if (topAppMenu && !isLoaded) {
         topAppLink.classList.add('nav-item', 'flex-shrink-0', 'nav-link', 'jcecc', 'topAppLink');
-        topAppLink.setAttribute('href', link);
-        topAppLink.innerHTML = linkLabel;
+        topAppLink.setAttribute('href', homeUrl);
+        topAppLink.innerHTML = homeLabel;
         topAppMenu.prepend(topAppLink);
     }
   }, 1000);
@@ -99,7 +99,7 @@
     let isLoaded = document.querySelector('.jcecc.dropdownLink');
     if (dropdownMenu && !isLoaded) {
         dropdownLink.classList.add('mobile-nav-item', 'dropdown-item', 'dropdown-nav-item', 'jcecc', 'dropdownLink');
-        dropdownLink.innerHTML = `<a href="${link}" role="menuitem">${linkLabel}</a>`;
+        dropdownLink.innerHTML = `<a href="${homeUrl}" role="menuitem">${homeLabel}</a>`;
         dropdownMenu.prepend(dropdownLink);
 
         dashboardLink.classList.add('mobile-nav-item', 'dropdown-item', 'dropdown-nav-item', 'jcecc', 'dashboardLink');
@@ -128,7 +128,7 @@
               if (dropdownAppMenu && !isLinkExist) {
                   dropdownAppLink.classList.add('pgn__dropdown-item', 'dropdown-item', 'frontend-home', 'jcecc', 'dropdownAppLink');
                   dropdownAppLink.setAttribute('href', link);
-                  dropdownAppLink.innerHTML = linkLabel;
+                  dropdownAppLink.innerHTML = homeLabel;
                   dropdownAppMenu.prepend(dropdownAppLink);
 
                   dashboardAppLink.classList.add('pgn__dropdown-item', 'dropdown-item', 'frontend-home', 'jcecc', 'dashboardAppLink');
