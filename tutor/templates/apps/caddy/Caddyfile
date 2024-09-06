@@ -51,7 +51,7 @@
         reverse_proxy http://frontend-apache:80
     }
 
-    handle_path /learning/* {
+    handle_path /catalog/* {
         reverse_proxy http://wordpress-web:80
     }
 
