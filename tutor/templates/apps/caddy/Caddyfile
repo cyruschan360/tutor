@@ -52,7 +52,7 @@
     }
 
     handle_path /portal/* {
-        reverse_proxy http://wordpress-web:80 {
+        reverse_proxy http://wordpress-web:8080 {
             header_up X-Forwarded-Proto https
         }
     }
