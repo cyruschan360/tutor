@@ -57,6 +57,13 @@
         }
     }
 
+    handle_path /wp-admin/* {
+        rewrite * /wp-admin{uri}
+        reverse_proxy http://wordpress-web:8080 {
+            header_up X-Forwarded-Proto https
+        }
+    }
+
     handle_path /static/video/* {
         reverse_proxy http://nginx-video:8081
     }
