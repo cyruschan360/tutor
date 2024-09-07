@@ -52,13 +52,7 @@
     }
 
     handle_path /portal/* {
-        reverse_proxy http://wordpress-web:8080 {
-            header_up X-Forwarded-Proto https
-        }
-    }
-
-    handle_path /wp-admin/* {
-        rewrite * /wp-admin{uri}
+        rewrite * /portal{uri}
         reverse_proxy http://wordpress-web:8080 {
             header_up X-Forwarded-Proto https
         }
