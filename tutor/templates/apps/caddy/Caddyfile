@@ -51,8 +51,11 @@
         reverse_proxy http://frontend-apache:80
     }
 
-    handle_path /catalog/* {
-        reverse_proxy http://wordpress-web:80
+    handle_path /portal/* {
+        rewrite * /portal{uri}
+        reverse_proxy http://wordpress-web:80 {
+            header_up X-Forwarded-Proto https
+        }
     }
 
     handle_path /static/video/* {
