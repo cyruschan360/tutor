@@ -12,8 +12,9 @@
 
   // Redirect openedx home to project website
   const isHome = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/?$/);
-  const langParam = (langCode == 'zh-tw') ? 'zh-Hant' : 'zh-Hans';
-  const homeUrl =  `https://learn-v2.jcecc.hk/online/learning/?lang=${langParam}`;
+  const langParam = (langCode == 'zh-tw') ? 'zh_TW' : 'zh_CN';
+  const permalink = (langCode == 'zh-tw') ? '' : '%E4%B8%BB%E9%A1%B5/';
+  const homeUrl =  `https://learn-v2.jcecc.hk/portal/${permalink}`;
   if (isHome) {
     location.replace(homeUrl);
   }
