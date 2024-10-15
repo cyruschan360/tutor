@@ -2,7 +2,7 @@
   // Load zh-tw | zh-cn translation
   const courseCode = location.href.match(/JCECC\+[BMA][0-9]{2}([TS])\+[0-9]+/);
   const lang = courseCode ? courseCode[1] : false;
-  const langCode = (lang === 'T') ? 'zh-tw' : 'zh-cn';
+  const langCode = (lang === 'S') ? 'zh-cn' : 'zh-tw';
   const cookie = document.cookie.match(/openedx-language-preference=(en|zh-cn|zh-tw)/);
   const cookieLangCode = cookie ? cookie[1] : false;
   if (lang && cookieLangCode && (cookieLangCode !== langCode)) {
@@ -12,8 +12,8 @@
 
   // Redirect openedx home to project website
   const isHome = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/?$/);
-  const langParam = (langCode == 'zh-tw') ? 'zh_TW' : 'zh_CN';
-  const permalink = (langCode == 'zh-tw') ? '' : '%E4%B8%BB%E9%A1%B5/';
+  const langParam = (langCode === 'zh-cn') ? 'zh_CN' : 'zh_TW';
+  const permalink = (langCode === 'zh-cn') ? '%E4%B8%BB%E9%A1%B5/' : '';
   const homeUrl =  `https://learn-v2.jcecc.hk/portal/${permalink}`;
   if (isHome) {
     location.replace(homeUrl);
