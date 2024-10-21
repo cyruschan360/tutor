@@ -143,9 +143,14 @@
   }, 1000);
 
   // Modify notification message for ungraded quiz
-  let timeout = setTimeout(function() {
-      const header = document.getElementsByTagName('h1')[0].innerText;
-      const isQuiz = header.match(/知識測驗/) || header.match(/知识测验/);
+  let timeout = setInterval(function() {
+      const header = document.getElementsByTagName('h1');
+      const headerText = header.length ? header[0].innerText : '';
+      const isQuiz = headerText.match(/知識測驗/) || headerText.match(/知识测验/);
+
+      if (header.length) {
+          clearInterval(timeout);
+      }
       
       let notificationMsg = document.querySelectorAll('.notification-message');
       notificationMsg.forEach(function(el){
