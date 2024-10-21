@@ -145,16 +145,19 @@
   // Modify notification message for ungraded quiz
   let timeout = setTimeout(function() {
       const header = document.getElementsByTagName('h1')[0].innerText;
-      const isSelfReflection = header.match(/反思練習/);
-      const isQuiz = header.match(/小測驗/);
-      const isUngraded = (isSelfReflection || isQuiz);
-
+      const isQuiz = header.match(/知識測驗/) || header.match(/知识测验/);
+      
       let notificationMsg = document.querySelectorAll('.notification-message');
       notificationMsg.forEach(function(el){
           const matched = el.innerText.match(/Your answers were previously saved./);
-          if (isUngraded && matched) {
-              el.innerText = (cookieLangCode === 'zh-cn') ? '您的答案已保存。' : '您的答案已保存。';
+          if (!isQuiz && matched) {
+              el.innerText = 'Your answers were previously saved. Submission is not required for this question.';
           }
+      });
+
+      const saveBtn = document.querySelectorAll('button.save');
+      saveBtn.forEach(function(el){
+          el.style.display = 'none';
       });
   }, 1000);
   
