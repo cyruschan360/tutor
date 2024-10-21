@@ -144,7 +144,7 @@
 
   // Modify notification message for ungraded quiz
   let timeout = setTimeout(function() {
-      const header = document.getElementsByTagName('h2')[0].innerText;
+      const header = document.getElementsByTagName('h1')[0].innerText;
       const isSelfReflection = header.match(/反思練習/);
       const isQuiz = header.match(/小測驗/);
       const isUngraded = (isSelfReflection || isQuiz);
