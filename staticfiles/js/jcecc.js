@@ -128,7 +128,7 @@
               let dashboardAppLink = document.createElement("a");
               if (dropdownAppMenu && !isLinkExist) {
                   dropdownAppLink.classList.add('pgn__dropdown-item', 'dropdown-item', 'frontend-home', 'jcecc', 'dropdownAppLink');
-                  dropdownAppLink.setAttribute('href', link);
+                  dropdownAppLink.setAttribute('href', homeUrl);
                   dropdownAppLink.innerHTML = homeLabel;
                   dropdownAppMenu.prepend(dropdownAppLink);
 
