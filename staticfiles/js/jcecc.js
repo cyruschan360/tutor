@@ -141,6 +141,22 @@
       });
     }
   }, 1000);
+
+  // Modify notification message for ungraded quiz
+  let timeout = setTimeout(function() {
+      const header = document.getElementsByTagName('h2')[0].innerText;
+      const isSelfReflection = header.match(/反思練習/);
+      const isQuiz = header.match(/小測驗/);
+      const isUngraded = (isSelfReflection || isQuiz);
+
+      let notificationMsg = document.querySelectorAll('.notification-message');
+      notificationMsg.forEach(function(el){
+          const matched = el.innerText.match(/Your answers were previously saved./);
+          if (isUngraded && matched) {
+              el.innerText = (cookieLangCode === 'zh-cn') ? '您的答案已保存。' : '您的答案已保存。';
+          }
+      });
+  }, 1000);
   
 })();
 
