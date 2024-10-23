@@ -143,27 +143,42 @@
   }, 1000);
 
   // Modify notification message for ungraded quiz
-  let timeout = setInterval(function() {
-      const header = document.getElementsByTagName('h1');
-      const headerText = header.length ? header[0].innerText : '';
-      const isQuiz = headerText.match(/知識測驗/) || headerText.match(/知识测验/);
-
-      if (header.length) {
-          clearInterval(timeout);
-      }
-      
+  const hideSaveButton = function() {
       let notificationMsg = document.querySelectorAll('.notification-message');
       notificationMsg.forEach(function(el){
           const matched = el.innerText.match(/Your answers were previously saved./);
-          if (!isQuiz && matched) {
-              el.innerText = 'Your answers were previously saved. Submission is not required for this question.';
+          if (matched) {
+              el.innerText = '您的答案已保存。';
           }
       });
 
-      const saveBtn = document.querySelectorAll('button.save');
+      const saveBtn = document.querySelectorAll('button.save, button.show');
       saveBtn.forEach(function(el){
           el.style.display = 'none';
       });
+
+      const submitBtn = document.querySelectorAll('button.submit:not(.custom-event)');
+      submitBtn.forEach(function(el){
+          el.classList.add('custom-event');
+          el.addEventListener('click', function() {
+              setTimeout(hideSaveButton, 2000);                  
+          });
+      });
+  }
+
+  let timeout = setInterval(function() {
+      const isCourseware = location.href.match(/\/courseware\/|\/block-v1\:/);
+      const header = document.getElementsByTagName('h1');
+      const headerText = header.length ? header[0].innerText : '';
+      //const isQuiz = headerText.match(/知識測驗|知识测验/);
+
+      if (isCourseware && header.length) {
+          hideSaveButton();
+      }
+
+      if (!isCourseware || header.length) {
+          clearInterval(timeout);
+      }
   }, 1000);
   
 })();
