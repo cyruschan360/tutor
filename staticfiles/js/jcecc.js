@@ -160,24 +160,18 @@
       const submitBtn = document.querySelectorAll('button.submit:not(.custom-event)');
       submitBtn.forEach(function(el){
           el.classList.add('custom-event');
-          el.addEventListener('click', function() {
-              setTimeout(hideSaveButton, 2000);                  
-          });
+          el.addEventListener('click', hideSaveButton);
       });
   }
 
   let timeout = setInterval(function() {
       const isCourseware = location.href.match(/\/courseware\/|\/block-v1\:/);
-      const header = document.getElementsByTagName('h1');
+      const header = document.querySelectorAll('h1, h2, .problem-header');
       const headerText = header.length ? header[0].innerText : '';
       //const isQuiz = headerText.match(/知識測驗|知识测验/);
 
       if (isCourseware && header.length) {
           hideSaveButton();
-      }
-
-      if (!isCourseware || header.length) {
-          clearInterval(timeout);
       }
   }, 1000);
   
