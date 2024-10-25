@@ -39,8 +39,11 @@ a#controlled-tab-tab-\/register,
 }
 
 .submit-attempt-container button.save.visible:hover,
-.problem-action-button-wrapper button.save.visible:hover {
-  background-color: #065683;
+.problem-action-button-wrapper button.save.visible:hover,
+.xmodule_display.xmodule_ProblemBlock div.problem .action button.save.problem-action-btn:hover {
+  background-color: #065683 !important;
+  color: #fcfcfc !important;
+  text-decoration: none !important;
 }
 
 .dropdown-user-menu > div.jcecc,
