@@ -29,6 +29,18 @@ a#controlled-tab-tab-\/register,
 .submit-attempt-container button.save.visible,
 .problem-action-button-wrapper button.save.visible {
   display: block;
+  border-color: #3b85ff;
+  background: #3b85ff;
+  color: #fcfcfc;
+  width: 5rem;
+  height: 2.5rem;
+  border-radius: 0.1875rem;
+  font-size: 16px;
+}
+
+.submit-attempt-container button.save.visible:hover,
+.problem-action-button-wrapper button.save.visible:hover {
+  background-color: #065683;
 }
 
 .dropdown-user-menu > div.jcecc,

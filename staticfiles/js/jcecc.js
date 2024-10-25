@@ -144,14 +144,6 @@
 
   // Modify notification message for ungraded quiz
   const updateSaveNotification = function() {
-      let notificationMsg = document.querySelectorAll('.notification-message');
-      notificationMsg.forEach(function(el){
-          const matched = el.innerText.match(/Your answers were previously saved./);
-          if (matched) {
-              el.innerText = '您的答案已保存。';
-          }
-      });
-
       // Show save button for ungraded open questions.
       const problems = document.querySelectorAll('.problem');
       problems.forEach(function(el){
@@ -164,7 +156,15 @@
           if (isOpenQuestion && isUngraded && saveBtn && submitBtn) {
               saveBtn.classList.add('visible');
               submitBtn.classList.add('hidden');
-          }
+
+              const notificationMsg = el.querySelectorAll('.notification-message');
+              notificationMsg.forEach(function(el){
+                  const matched = el.innerText.match(/Your answers were previously saved|您的答案已保存/);
+                  if (matched) {
+                      el.innerText = '您的答案已保存。';
+                  }
+              });
+          }          
       });
   }
 
