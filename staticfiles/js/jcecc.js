@@ -152,18 +152,16 @@
           const isUngraded = problemProgress && problemProgress.innerText.match(/\(ungraded\)/);
           const saveBtn = el.querySelector('button.save:not(.visible)');
           const submitBtn = el.querySelector('button.submit:not(.hidden)');
+          const notificationMsg = el.querySelector('.notification-save .notification-message');
           
-          if (isOpenQuestion && isUngraded && saveBtn && submitBtn) {
+          if (isOpenQuestion && isUngraded && saveBtn && submitBtn && notificationMsg) {
               saveBtn.classList.add('visible');
               submitBtn.classList.add('hidden');
-
-              const notificationMsg = el.querySelectorAll('.notification-message');
-              notificationMsg.forEach(function(el){
-                  const matched = el.innerText.match(/Your answers were previously saved|您的答案已保存/);
-                  if (matched) {
-                      el.innerText = '您的答案已保存。';
-                  }
-              });
+              
+              notificationMsg.innerText = notificationMsg.innerText.replace(
+                  /^.+(Your answers were previously saved|您的答案已保存).+$/,
+                  '您的答案已保存。'
+              );
           }          
       });
   }
