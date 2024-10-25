@@ -26,6 +26,11 @@ a#controlled-tab-tab-\/register,
   display: none;
 }
 
+.submit-attempt-container button.save.visible,
+.problem-action-button-wrapper button.save.visible {
+  display: block;
+}
+
 .dropdown-user-menu > div.jcecc,
 .dropdown-user-menu > div:last-child {
   display: block;

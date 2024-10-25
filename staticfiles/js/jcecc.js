@@ -143,7 +143,7 @@
   }, 1000);
 
   // Modify notification message for ungraded quiz
-  const hideSaveButton = function() {
+  const updateSaveNotification = function() {
       let notificationMsg = document.querySelectorAll('.notification-message');
       notificationMsg.forEach(function(el){
           const matched = el.innerText.match(/Your answers were previously saved./);
@@ -152,15 +152,19 @@
           }
       });
 
-      const saveBtn = document.querySelectorAll('button.save, button.show');
-      saveBtn.forEach(function(el){
-          el.style.display = 'none';
-      });
-
-      const submitBtn = document.querySelectorAll('button.submit:not(.custom-event)');
-      submitBtn.forEach(function(el){
-          el.classList.add('custom-event');
-          el.addEventListener('click', hideSaveButton);
+      // Show save button for ungraded open questions.
+      const problems = document.querySelectorAll('.problem');
+      problems.forEach(function(el){
+          const isOpenQuestion = el.querySelector('input[type="text"],input[type="textarea"]');
+          const problemProgress = el.parentElement.querySelector('.problem-progress');
+          const isUngraded = problemProgress && problemProgress.innerText.match(/\(ungraded\)/);
+          const saveBtn = el.querySelector('button.save:not(.visible)');
+          const submitBtn = el.querySelector('button.submit:not(.hidden)');
+          
+          if (isOpenQuestion && isUngraded && saveBtn && submitBtn) {
+              saveBtn.classList.add('visible');
+              submitBtn.classList.add('hidden');
+          }
       });
   }
 
@@ -168,10 +172,9 @@
       const isCourseware = location.href.match(/\/courseware\/|\/block-v1\:/);
       const header = document.querySelectorAll('h1, h2, .problem-header');
       const headerText = header.length ? header[0].innerText : '';
-      //const isQuiz = headerText.match(/知識測驗|知识测验/);
 
       if (isCourseware && header.length) {
-          hideSaveButton();
+          updateSaveNotification();
       }
   }, 1000);
   
