@@ -159,7 +159,7 @@
               submitBtn.classList.add('hidden');
               
               notificationMsg.innerText = notificationMsg.innerText.replace(
-                  /^.+(Your answers were previously saved|您的答案已保存).+$/,
+                  /^.*(Your answers were previously saved|您的答案已保存).*$/,
                   '您的答案已保存。'
               );
           }          
