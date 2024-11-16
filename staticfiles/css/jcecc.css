@@ -22,7 +22,11 @@ a#forgot-password,
 a#controlled-tab-tab-\/register,
 .discussion-show.btn,
 .discussion.inline-discussion,
-.subtitles-menu > li.spacing {
+.subtitles-menu > li.spacing,
+#pgn__checkpoint,
+.wrapper-messages-primary .message.message-status.course-status-earned-not-available,
+.alert-content.alert.alert-success.show,
+.row.course-outline-tab div:nth-child(3) {
   display: none;
 }
 
@@ -72,4 +76,9 @@ ul.listing-courses {
 
 header.learning-header .user-dropdown .jcecc.dashboardAppLink {
   display: block;
-} 
+}
+
+.row.course-outline-tab .col-md-8 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
