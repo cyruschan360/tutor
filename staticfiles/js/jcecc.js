@@ -20,8 +20,8 @@
   }
 
   // Translate login page
-  const isCasLogin = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/cas\/login\/?/);
-  if (isCasLogin) {
+  const isSSOLogin = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/auth\/login\/wordpress-oauth\/?/);
+  if (isSSOLogin) {
     const username = (cookieLangCode === 'zh-cn') ? '帐号' : '帳號';
     const usernameLabel = document.querySelector('label[for="id_username"]');
     const usernameInput = document.getElementById('id_username');
@@ -49,9 +49,9 @@
   let redirectTimer = setInterval( () => {    
     const isAnonymous = document.querySelector('a[href*="/register"],#register-user');
     const isLoginPage = location.href.match(/\/authn\/login/);
-    const isCASPage = location.href.match(/\/auth\/cas\/login/);
-    if ((isAnonymous || isLoginPage) && !isCASPage) {
-        location.assign('https://learn-v2.jcecc.hk/auth/cas/login');
+    const isSSOPage = location.href.match(/\/auth\/login\/wordpress-oauth\/?/);
+    if ((isAnonymous || isLoginPage) && !isSSOPage) {
+        location.assign('https://learn-v2.jcecc.hk/auth/login/wordpress-oauth/');
         clearInterval(redirectTimer);
     }
   }, 500);
@@ -60,7 +60,7 @@
   let loginTimer = setInterval( () => {
     const loginLinks = document.querySelectorAll('a[href*="/login"]');
     loginLinks.forEach( el => {
-        let href = el.getAttribute('href').replace(/\/\/learn-v2\.jcecc\.hk\/login/, "//learn-v2.jcecc.hk/auth/cas/login");
+        let href = el.getAttribute('href').replace(/\/\/learn-v2\.jcecc\.hk\/login/, "//learn-v2.jcecc.hk/auth/login/wordpress-oauth/");
         el.setAttribute('href', href);
     });
   }, 1000);

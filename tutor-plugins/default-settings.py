@@ -23,6 +23,7 @@ ENABLE_ACCOUNT_DELETION: true
 ENABLE_BULK_ENROLLMENT_VIEW: true
 ENABLE_BULK_USER_RETIREMENT: true
 ENABLE_CHANGE_USER_PASSWORD_ADMIN: true
+ENABLE_COMBINED_LOGIN_REGISTRATION: true
 ENABLE_COURSE_ASSESSMENT_GRADE_CHANGE_SIGNAL: true
 ENABLE_CORS_HEADERS: true
 ENABLE_CROSS_DOMAIN_CSRF_COOKIE: true
@@ -35,7 +36,7 @@ ENABLE_MOBILE_REST_API: true
 ENABLE_NEW_BULK_EMAIL_EXPERIENCE: true
 ENABLE_OAUTH2_PROVIDER: true
 ENABLE_PREREQUISITE_COURSES: true
-ENABLE_REQUIRE_THIRD_PARTY_AUTH: false
+ENABLE_REQUIRE_THIRD_PARTY_AUTH: true
 ENABLE_SPECIAL_EXAMS: true
 ENABLE_SYSADMIN_DASHBOARD: false
 ENABLE_THIRD_PARTY_AUTH: true
@@ -55,6 +56,9 @@ hooks.Filters.ENV_PATCHES.add_item(
   (
     "lms-env",
     """
+ADDL_INSTALLED_APPS: [
+    "oauth2_wordpress"
+]
 CORS_ORIGIN_WHITELIST: [
     "learn.jcecc.hk",
     "studio.learn.jcecc.hk",
@@ -88,6 +92,9 @@ LOGIN_REDIRECT_WHITELIST: [
     "foss.hku.hk",
     "nfs1.talic.hku.hk"
 ]
+THIRD_PARTY_AUTH_BACKENDS: [
+    "jcecc_oauth2_wordpress.wp_oauth.WPOAuth2"
+]
 THIRD_PARTY_AUTH_ONLY_DOMAIN: [
     "learn.jcecc.hk",
     "studio.learn.jcecc.hk",
@@ -110,7 +117,7 @@ CAS_REDIRECT_URL: "https://learn-v2.jcecc.hk/dashboard"
 CAS_SERVER_URL: "https://learn-v2.jcecc.hk/cas/login"
 CAS_VERSION: "2"
 CAS_APPLY_ATTRIBUTES_TO_USER: true
-CAS_LOGO_URL: "https://learn.jcecc.hk/static/images/logo.10c657faf969.png"
+CAS_LOGO_URL: "https://learn-v2.jcecc.hk/portal/wp-content/uploads/2024/10/JCECC.png"
 CAS_COMPONENT_URLS: {
     "bootstrap3_css": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
     "bootstrap3_js": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
@@ -137,6 +144,9 @@ hooks.Filters.ENV_PATCHES.add_item(
   (
     "cms-env",
     """
+ADDL_INSTALLED_APPS: [
+    "oauth2_wordpress"
+]
 CORS_ORIGIN_WHITELIST: [
     "learn.jcecc.hk",
     "studio.learn.jcecc.hk",
@@ -169,6 +179,9 @@ LOGIN_REDIRECT_WHITELIST: [
     "foss.hku.hk",
     "nfs1.talic.hku.hk"
 ]
+THIRD_PARTY_AUTH_BACKENDS: [
+    "jcecc_oauth2_wordpress.wp_oauth.WPOAuth2"
+]
 THIRD_PARTY_AUTH_ONLY_DOMAIN: [
     "learn.jcecc.hk",
     "studio.learn.jcecc.hk",
@@ -190,7 +203,7 @@ TIME_ZONE: "Asia/Hong_Kong"
 CAS_SERVER_URL: "https://learn-v2.jcecc.hk/cas/login"
 CAS_VERSION: "2"
 CAS_APPLY_ATTRIBUTES_TO_USER: true
-CAS_LOGO_URL: "https://learn.jcecc.hk/static/images/logo.10c657faf969.png"
+CAS_LOGO_URL: "https://learn-v2.jcecc.hk/portal/wp-content/uploads/2024/10/JCECC.png"
 CAS_COMPONENT_URLS: {
     "bootstrap3_css": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
     "bootstrap3_js": "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
