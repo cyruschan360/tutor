@@ -8,8 +8,8 @@ ALLOW_AUTOMATED_SIGNUPS: true
 ALLOW_COURSE_STAFF_GRADE_DOWNLOADS: true
 ALLOW_EMAIL_ADDRESS_CHANGE: true
 ALLOW_HIDING_DISCUSSION_TAB: true
-ALLOW_PUBLIC_ACCOUNT_CREATION: true
-AUTH_USE_CAS: true
+ALLOW_PUBLIC_ACCOUNT_CREATION: false
+AUTH_USE_CAS: false
 BATCH_ENROLLMENT_NOTIFY_USERS_DEFAULT: false
 CERTIFICATES_HTML_VIEW: true
 CUSTOM_CERTIFICATE_TEMPLATES_ENABLED: true
@@ -134,6 +134,16 @@ CAS_NEW_VERSION_EMAIL_WARNING: false
 RATELIMIT_ENABLE: false
 REGISTRATION_RATELIMIT: "10000/1d"
 REGISTRATION_VALIDATION_RATELIMIT: "10000/1d"
+SOCIAL_AUTH_PIPELINE: [
+    "social_core.pipeline.social_auth.social_details",
+    "social_core.pipeline.social_auth.social_uid",
+    "social_core.pipeline.social_auth.auth_allowed",
+    "social_core.pipeline.social_auth.social_user",
+    "social_core.pipeline.user.get_username",
+    "social_core.pipeline.social_auth.associate_user",    
+    "social_core.pipeline.social_auth.load_extra_data",
+    "social_core.pipeline.user.user_details"
+]
 USERNAME_REGEX_PARTIAL: '[\w._+-@]+'
 WIKI_ENABLED: false
 """
@@ -222,6 +232,16 @@ OAUTH_ID_TOKEN_EXPIRATION: 86400
 RATELIMIT_ENABLE: false
 REGISTRATION_RATELIMIT: "10000/1d"
 REGISTRATION_VALIDATION_RATELIMIT: "10000/1d"
+SOCIAL_AUTH_PIPELINE: [
+    "social_core.pipeline.social_auth.social_details",
+    "social_core.pipeline.social_auth.social_uid",
+    "social_core.pipeline.social_auth.auth_allowed",
+    "social_core.pipeline.social_auth.social_user",
+    "social_core.pipeline.user.get_username",
+    "social_core.pipeline.social_auth.associate_user",    
+    "social_core.pipeline.social_auth.load_extra_data",
+    "social_core.pipeline.user.user_details"
+]
 USERNAME_REGEX_PARTIAL: '[\w._+-@]+'
 WIKI_ENABLED: false
 """

@@ -82,6 +82,11 @@
     }
     rewrite @favicon_matcher /theming/asset/images/favicon.ico
 
+    redir {
+        if {scheme} is http
+        / https://{host}{uri}
+    }
+    
     handle_path /online/* {
         reverse_proxy http://frontend-apache:80
     }

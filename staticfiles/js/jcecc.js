@@ -20,7 +20,7 @@
   }
 
   // Translate login page
-  const isSSOLogin = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/auth\/login\/wordpress-oauth\/?/);
+  const isSSOLogin = location.href.match(/^https\:\/\/learn-v2\.jcecc\.hk\/auth\/cas\/login\/?/);
   if (isSSOLogin) {
     const username = (cookieLangCode === 'zh-cn') ? '帐号' : '帳號';
     const usernameLabel = document.querySelector('label[for="id_username"]');
