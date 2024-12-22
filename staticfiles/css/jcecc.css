@@ -81,3 +81,7 @@ header.learning-header .user-dropdown .jcecc.dashboardAppLink {
   flex: 0 0 100%;
   max-width: 100%;
 }
+
+div[data-testid="start-resume-card"] {
+  display: none;
+}
