@@ -76,6 +76,10 @@
 #    }
 #}
 
+http://{{ LMS_HOST }} {
+  redir https://{host}{uri} permanent
+}
+
 {{ LMS_HOST }}{$default_site_port}, {{ PREVIEW_LMS_HOST }}{$default_site_port} {
     @favicon_matcher {
         path_regexp ^/favicon.ico$
