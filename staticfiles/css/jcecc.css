@@ -85,3 +85,8 @@ header.learning-header .user-dropdown .jcecc.dashboardAppLink {
 div[data-testid="start-resume-card"] {
   display: none;
 }
+
+#paragon-portal-root,
+.new-user-tour-dialog {
+  display: none;
+}
