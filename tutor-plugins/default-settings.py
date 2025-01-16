@@ -150,6 +150,15 @@ WIKI_ENABLED: false
   )
 )
 
+hooks.Filters.ENV_PATCHES.add_item( 
+  ( 
+    "cms-env-features", 
+    """
+AUTH_USE_CAS: true
+    """
+  )
+)
+
 hooks.Filters.ENV_PATCHES.add_item(
   (
     "cms-env",
@@ -188,9 +197,6 @@ LOGIN_REDIRECT_WHITELIST: [
     "preview.learn-v2.jcecc.hk",
     "foss.hku.hk",
     "nfs1.talic.hku.hk"
-]
-THIRD_PARTY_AUTH_BACKENDS: [
-    "jcecc_oauth2_wordpress.wp_oauth.WPOAuth2"
 ]
 THIRD_PARTY_AUTH_ONLY_DOMAIN: [
     "learn.jcecc.hk",
@@ -232,16 +238,6 @@ OAUTH_ID_TOKEN_EXPIRATION: 86400
 RATELIMIT_ENABLE: false
 REGISTRATION_RATELIMIT: "10000/1d"
 REGISTRATION_VALIDATION_RATELIMIT: "10000/1d"
-SOCIAL_AUTH_PIPELINE: [
-    "social_core.pipeline.social_auth.social_details",
-    "social_core.pipeline.social_auth.social_uid",
-    "social_core.pipeline.social_auth.auth_allowed",
-    "social_core.pipeline.social_auth.social_user",
-    "social_core.pipeline.user.get_username",
-    "social_core.pipeline.social_auth.associate_user",    
-    "social_core.pipeline.social_auth.load_extra_data",
-    "social_core.pipeline.user.user_details"
-]
 USERNAME_REGEX_PARTIAL: '[\w._+-@]+'
 WIKI_ENABLED: false
 """

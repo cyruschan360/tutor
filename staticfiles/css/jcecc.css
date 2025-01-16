@@ -54,6 +54,10 @@ a#controlled-tab-tab-\/register,
   display: block;
 }
 
+.wrapper-footer {
+  display: none;
+}
+
 .wrapper-footer footer#footer-openedx .footer-about-openedx {
   width: 100%;
 }
