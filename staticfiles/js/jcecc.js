@@ -175,6 +175,15 @@
           updateSaveNotification();
       }
   }, 1000);
+
+  // Open all links in dashboard in new tab
+  const isDashboard = (location.pathname === '/dashboard');
+  if (isDashboard) {
+    const links = document.querySelectorAll('a[href*="//apps.learn-v2.jcecc.hk/"],a[href^="/courses/"]');
+    links.forEach(function(el){
+      el.setAttribute('target', '_blank');
+    });
+  }
   
 })();
 
