@@ -54,6 +54,12 @@
         location.assign('https://learn-v2.jcecc.hk/auth/login/wordpress-oauth/');
         clearInterval(redirectTimer);
     }
+
+    const isAccountPage = location.href.match(/\/account\//);
+    if (isAccountPage) {
+        location.assign('https://learn-v2.jcecc.hk/dashboard/');
+        clearInterval(redirectTimer);
+    }
   }, 500);
 
   // Replace login links

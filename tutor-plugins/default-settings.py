@@ -71,7 +71,9 @@ CORS_ORIGIN_WHITELIST: [
     "xqueue.learn-v2.jcecc.hk",
     "preview.learn-v2.jcecc.hk",
     "foss.hku.hk",
-    "nfs1.talic.hku.hk"
+    "nfs1.talic.hku.hk",
+    "https://learn-v2.jcecc.hk",
+    "https://apps.learn-v2.jcecc.hk"
 ]
 CROSS_DOMAIN_CSRF_COOKIE_DOMAIN: ".jcecc.hk"
 CROSS_DOMAIN_CSRF_COOKIE_NAME: "jcecc"
@@ -178,7 +180,9 @@ CORS_ORIGIN_WHITELIST: [
     "xqueue.learn-v2.jcecc.hk",
     "preview.learn-v2.jcecc.hk",
     "foss.hku.hk",
-    "nfs1.talic.hku.hk"
+    "nfs1.talic.hku.hk",
+    "https://learn-v2.jcecc.hk",
+    "https://apps.learn-v2.jcecc.hk"
 ]
 CROSS_DOMAIN_CSRF_COOKIE_DOMAIN: ".jcecc.hk"
 CROSS_DOMAIN_CSRF_COOKIE_NAME: "jcecc"

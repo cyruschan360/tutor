@@ -12,6 +12,25 @@
     {{ patch("caddyfile-global")|indent(4) }}
 }
 
+(cors) {
+	@cors_preflight method OPTIONS
+
+	header {
+		Access-Control-Allow-Origin "{header.origin}"
+		Vary Origin
+		Access-Control-Expose-Headers "Authorization"
+		Access-Control-Allow-Credentials "true"
+	}
+
+	handle @cors_preflight {
+		header {
+			Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE"
+			Access-Control-Max-Age "3600"
+		}
+		respond "" 204
+	}
+}
+
 # proxy directive snippet (with logging) to be used as follows:
 #
 #     import proxy "containername:port"
@@ -86,6 +105,8 @@ http://{{ LMS_HOST }} {
     }
     rewrite @favicon_matcher /theming/asset/images/favicon.ico
 
+    #import cors {header.origin}
+
     handle_path /online/* {
         reverse_proxy http://frontend-apache:80
     }
@@ -134,6 +155,8 @@ http://{{ LMS_HOST }} {
         path_regexp ^/favicon.ico$
     }
     rewrite @favicon_matcher /theming/asset/images/favicon.ico
+
+    #import cors {header.origin}
 
     import proxy "cms:8000"
 
