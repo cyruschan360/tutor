@@ -117,9 +117,16 @@
       dropdownAppMenuBtn.classList.add('jcecc', 'dropdownAppMenuBtn');
       dropdownAppMenuBtn.addEventListener("click", (e) => {
           setTimeout( () => {
-              let logoutBtn = document.querySelector('.learning-header .user-dropdown a[href*="/logout"]');
+              let logoutBtn = document.querySelector('a[href*="/logout"]');
+              let logoutPortalLink = 'https://learn-v2.jcecc.hk/portal/wp-login.php?action=logout';
               if (logoutBtn) {
                   logoutBtn.innerHTML = (cookieLangCode === 'zh-cn') ? '登出' : '登出';
+                  logoutBtn.addEventListener("click", async (e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      await fetch(logoutBtn.href);
+                      location.assign(logoutPortalLink);
+                  });
               }
 
               let dropdownAppMenu = document.querySelector('.learning-header .user-dropdown > div');
