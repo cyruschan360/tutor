@@ -25,7 +25,8 @@ a#controlled-tab-tab-\/register,
 #pgn__checkpoint,
 .wrapper-messages-primary .message.message-status.course-status-earned-not-available,
 .alert-content.alert.alert-success.show,
-.row.course-outline-tab div:nth-child(3) {
+.row.course-outline-tab div:nth-child(3),
+#dashboard-search-bar {
   display: none;
 }
 
