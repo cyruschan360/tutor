@@ -56,6 +56,14 @@
     }
   }, 500);
 
+  // Redirect to login page if session lost
+  let refreshTimer = setInterval( async () => {
+    const response = await fetch('/login_refresh', { method: 'POST' });
+    if (response.status === 401) {
+        location.assign('https://learn-v2.jcecc.hk/auth/login/wordpress-oauth/');
+    }
+  }, 1000*30);
+
   // Replace login links
   let loginTimer = setInterval( () => {
     const loginLinks = document.querySelectorAll('a[href*="/login"]');
