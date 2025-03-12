@@ -45,6 +45,12 @@
     }    
   }
 
+  // Translate dashboard
+  const resumeCourseBtn = document.querySelectorAll('.course-target-link.enter-course');
+  resumeCourseBtn.forEach( (el) => {
+    el.innerHTML = el.innerHTML.replace('Resume Course', (cookieLangCode === 'zh-cn') ? '检视课程' : '檢視課程');
+  });
+
   // Redirect to JCECC website for registration
   let redirectTimer = setInterval( () => {    
     const isAnonymous = document.querySelector('a[href*="/register"],#register-user');
