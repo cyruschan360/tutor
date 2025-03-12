@@ -199,6 +199,7 @@
   }, 1000);
 
   // Open all links in dashboard in new tab
+  const isDashboard = location.pathname.match(/^\/dashboard/);
   if (isDashboard) {
     const links = document.querySelectorAll('a[href*="//apps.learn-v2.jcecc.hk/"],a[href^="/courses/"]');
     links.forEach(function(el){
@@ -207,7 +208,6 @@
   }
 
   // Set default language
-  const isDashboard = location.pathname.match(/^\/dashboard/);
   if (isDashboard) {
     let response = await fetch('/update_lang/', { method: 'GET' });
     let html = await response.text();
