@@ -3,7 +3,7 @@
   const courseCode = location.href.match(/JCECC\+[BMA][0-9]{2}([TS])\+[0-9]+/);
   const lang = courseCode ? courseCode[1] : false;
   const langCode = (lang === 'S') ? 'zh-cn' : 'zh-tw';
-  const cookie = document.cookie.match(/openedx-language-preference=(en|zh-cn|zh-tw)/);
+  const cookie = document.cookie.match(/openedx-language-preference=([A-Za-z-_]+)/);
   const cookieLangCode = cookie ? cookie[1] : false;
   if (lang && cookieLangCode && (cookieLangCode !== langCode)) {
     document.cookie = `openedx-language-preference=${langCode}; Domain=.jcecc.hk; Path=/`;
