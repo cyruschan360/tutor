@@ -49,7 +49,7 @@
   // Translate dashboard
   const resumeCourseBtn = document.querySelectorAll('.course-target-link.enter-course');
   resumeCourseBtn.forEach( (el) => {
-    el.innerHTML = el.innerHTML.replace('Resume Course', (cookieLangCode === 'zh-cn') ? '检视课程' : '檢視課程');
+    el.innerHTML = el.innerHTML.replace('Resume Course', (cookieLangCode === 'zh-cn') ? '继续课程' : '繼續課程');
   });
 
   // Redirect to JCECC website for registration
