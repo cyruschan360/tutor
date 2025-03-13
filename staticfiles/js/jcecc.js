@@ -8,7 +8,7 @@
   
   if (lang && cookieLangCode && (cookieLangCode !== langCode)) {
     document.cookie = `openedx-language-preference=${langCode}; Domain=.jcecc.hk; Path=/`;
-    location.reload();
+    //location.reload();
   }
 
   // Redirect openedx home to project website
