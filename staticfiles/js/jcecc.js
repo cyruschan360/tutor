@@ -1,9 +1,9 @@
-(async function() {
+(function() {
   // Load zh-tw | zh-cn translation
   const courseCode = location.href.match(/JCECC\+[BMA][0-9]{2}([TS])\+[0-9]+/);
   const lang = courseCode ? courseCode[1] : false;
   const langCode = (lang === 'S') ? 'zh-cn' : 'zh-tw';
-  const cookie = document.cookie.match(/openedx-language-preference=(zh-cn|zh-tw)/);
+  const cookie = document.cookie.match(/openedx-language-preference=(en|zh-cn|zh-tw)/);
   const cookieLangCode = cookie ? cookie[1] : false;
   
   if (lang && cookieLangCode && (cookieLangCode !== langCode)) {
@@ -205,19 +205,6 @@
     links.forEach(function(el){
       el.setAttribute('target', '_blank');
     });
-  }
-
-  // Set default language
-  if (isDashboard) {
-    let response = await fetch('/update_lang/', { method: 'GET' });
-    let html = await response.text();
-    let csrftoken = html.match(/name="csrfmiddlewaretoken" value="(.+)"/);
-    let formData = new FormData();
-    formData.append('preview_language', cookieLangCode ? cookieLangCode : 'zh-tw');
-    formData.append('action', 'set_preview_language');
-    formData.append('csrfmiddlewaretoken', csrftoken ? csrftoken[1] : '');
-
-    await fetch('/update_lang/', { method: 'POST', body: formData });
   }
   
 })();
