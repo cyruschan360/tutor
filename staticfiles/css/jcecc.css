@@ -27,6 +27,9 @@ a#controlled-tab-tab-\/register,
 .alert-content.alert.alert-success.show,
 .row.course-outline-tab div:nth-child(3),
 #dashboard-search-bar,
+#courseHome-outline li span.text-monospace,
+section[data-testid="certificate-status-component"],
+section.raised-card h2 + p.small,
 section.raised-card:has(svg.donut) {
   display: none;
 }
