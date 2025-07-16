@@ -206,6 +206,21 @@
       el.setAttribute('target', '_blank');
     });
   }
-  
+
+  // Sort courses in dashboard
+  const coursePriority = ['B', 'M', 'A'];
+  const langPriority = ['T', 'S'];
+  const courses = document.querySelectorAll('ul.listing-courses li.course-item');
+  courses.sort( (a, b) => {
+    const aLink = a.querySelector('a.course-target-link');
+    const aKey = aLink.getAttribute('data-course-key');
+
+    const bLink = b.querySelector('a.course-target-link');
+    const bKey = bLink.getAttribute('data-course-key');
+    console.log(aKey);
+    console.log(bKey);
+    return (aKey > bKey);
+  });
+
 })();
 

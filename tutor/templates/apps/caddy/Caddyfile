@@ -60,40 +60,41 @@
     {{ patch("caddyfile-proxy")|indent(4) }}
 }
 
-#learn.jcecc.hk{$default_site_port}, preview.learn.jcecc.hk{$default_site_port} {
-#    @favicon_matcher {
-#        path_regexp ^/favicon.ico$
-#    }
-#    rewrite @favicon_matcher /theming/asset/images/favicon.ico
-#
-#    # Limit profile image upload size
-#    handle_path /api/profile_images/*/*/upload {
-#        request_body {
-#            max_size 1MB
-#        }
-#    }
-#
-#    handle_path /* {
-#        reverse_proxy http://175.159.162.7:30005
-#        request_body {
-#            max_size 4MB
-#        }
-#    }
-#}
-#
-#studio.learn.jcecc.hk{$default_site_port} {
-#    @favicon_matcher {
-#        path_regexp ^/favicon.ico$
-#    }
-#    rewrite @favicon_matcher /theming/asset/images/favicon.ico
-#
-#    handle_path /* {
-#        reverse_proxy http://175.159.162.7:30006
-#        request_body {
-#            max_size 250MB
-#        }
-#    }
-#}
+http://foss.hku.hk {
+  redir https://{host}{uri} permanent
+}
+
+foss.hku.hk{$default_site_port} {
+    handle_path / {
+        rewrite * /jcecc/
+    }
+
+    handle_path /jcpanda/* {
+        reverse_proxy https://foss2.hku.hk
+    }
+
+    @project_old_matcher {
+        path_regexp ^/jcecc$
+    }
+    rewrite @project_old_matcher /jcecc/
+    handle_path /jcecc/* {
+        rewrite * /jcecc{uri}
+        reverse_proxy http://wordpress-project-old:80 {
+            header_up X-Forwarded-Proto https
+        }
+    }
+
+    @project_matcher {
+        path_regexp ^/project$
+    }
+    rewrite @project_matcher /project/
+    handle_path /project/* {
+        rewrite * /project{uri}
+        reverse_proxy http://wordpress-project:8080 {
+            header_up X-Forwarded-Proto https
+        }
+    }
+}
 
 http://{{ LMS_HOST }} {
   redir https://{host}{uri} permanent
@@ -107,15 +108,37 @@ http://{{ LMS_HOST }} {
 
     #import cors {header.origin}
 
-    handle_path /online/* {
-        reverse_proxy http://frontend-apache:80
-    }
+    #handle_path /online/* {
+    #    reverse_proxy http://frontend-apache:80
+    #}
 
     #@external_matcher {
     #    path_regexp ^/portal
     #    not remote_ip 127.0.0.1 192.168.0.0/16 172.0.0.0/8 10.0.0.0/8 147.8.0.0/16 175.159.158.0/23 175.159.160.0/19 175.159.212.0/22 202.45.128.0/24 202.189.96.0/19
     #}
     #redir @external_matcher https://foss.hku.hk/jcecc/online/learning temporary
+
+    @project_old_matcher {
+        path_regexp ^/jcecc$
+    }
+    rewrite @project_old_matcher /jcecc/
+    handle_path /jcecc/* {
+        rewrite * /jcecc{uri}
+        reverse_proxy http://wordpress-project-old:80 {
+            header_up X-Forwarded-Proto https
+        }
+    }
+
+    @project_matcher {
+        path_regexp ^/project$
+    }
+    rewrite @project_matcher /project/
+    handle_path /project/* {
+        rewrite * /project{uri}
+        reverse_proxy http://wordpress-project:8080 {
+            header_up X-Forwarded-Proto https
+        }
+    }
 
     @portal_matcher {
         path_regexp ^/portal$
