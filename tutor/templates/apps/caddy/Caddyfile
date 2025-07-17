@@ -69,9 +69,9 @@ foss.hku.hk{$default_site_port} {
         rewrite * /jcecc/
     }
 
-    handle_path /jcpanda/* {
-        reverse_proxy https://foss2.hku.hk
-    }
+    redir /jcpanda/* https://foss2.hku.hk{uri} permanent
+    redir /portal/* https://foss2.hku.hk/jcpanda/portal/ permanent
+    redir /jcecc/online/* https://learn-v2.jcecc.hk/portal/ permanent
 
     @project_old_matcher {
         path_regexp ^/jcecc$
