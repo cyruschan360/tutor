@@ -96,7 +96,7 @@ foss.hku.hk{$default_site_port} {
         }
     }
 
-    handle /research-portal/* {
+    handle /research-portal* {
         reverse_proxy http://foss-research-portal-gateway:80 {
             header_up X-Forwarded-Proto https
         }
