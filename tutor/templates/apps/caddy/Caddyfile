@@ -71,6 +71,7 @@ foss.hku.hk{$default_site_port} {
 
     redir /jcpanda/* https://foss2.hku.hk{uri} permanent
     redir /portal/* https://foss2.hku.hk/jcpanda/portal/ permanent
+    redir /fossgb/prod/* https://foss2.hku.hk/fb/cas/ permanent
     redir /jcecc/online/* https://learn-v2.jcecc.hk/portal/ permanent
 
     @project_old_matcher {
@@ -91,6 +92,12 @@ foss.hku.hk{$default_site_port} {
     handle_path /project/* {
         rewrite * /project{uri}
         reverse_proxy http://wordpress-project:8080 {
+            header_up X-Forwarded-Proto https
+        }
+    }
+
+    handle /research-portal/* {
+        reverse_proxy http://foss-research-portal-gateway:80 {
             header_up X-Forwarded-Proto https
         }
     }
